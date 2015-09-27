@@ -6,7 +6,7 @@ A utility to provide a springy mouse and touch input, similar to bouncy scroll p
 
 Demo:
 
-http://mattdesl.github.io/spring-input/
+[http://mattdesl.github.io/spring-input/](http://mattdesl.github.io/spring-input/)
 
 <img src="http://i.imgur.com/KDYz1eW.png" width="70%" />
 
