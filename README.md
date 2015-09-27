@@ -4,6 +4,12 @@
 
 A utility to provide a springy mouse and touch input, similar to bouncy scroll panels in iOS. This can be used in a variety of applications, such as scrolling, rotating a 3D camera, flicking a 2D card, etc.
 
+Demo:
+
+http://mattdesl.github.io/spring-input/
+
+<img src="http://i.imgur.com/KDYz1eW.png" width="70%" />
+
 Adapted from [touch-scroll-physics](https://github.com/Jam3/touch-scroll-physics/), which is more application-specific than this module.
 
 ## Install
@@ -20,7 +26,7 @@ See [test.js](./test.js) for a full example.
 var createSpring = require('spring-input')
 
 // e.g. a slider along the x-axis
-var input = createSpring({
+var spring = createSpring({
   min: 0,        // min bound
   max: 1,        // max bound
   edge: 0.1,     // gutter size
@@ -30,19 +36,19 @@ var input = createSpring({
 })
 
 function onDragStart (x, y) {
-  input.start(x)
+  spring.start(x)
 }
 
 function onDragMove (x, y) {
-  input.move(x)
+  spring.move(x)
 }
 
 function onDragEnd (x, y) {
-  input.end(x)
+  spring.end(x)
 }
 
 function onRequestAnimationFrame () {
-  input.update()
+  spring.update()
 }
 ```
 
@@ -70,7 +76,7 @@ Creates a new sprint input with the optional settings:
 All values can be changed during runtime, eg:
 
 ```js
-input.max = newScrollHeight
+spring.max = newScrollHeight
 ```
 
 #### `spring.start(value)`
