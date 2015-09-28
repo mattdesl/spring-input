@@ -1,12 +1,13 @@
 var loop = require('raf-loop')
 var css = require('dom-css')
 var touches = require('touches')
+
 var input = require('./')({
   min: 0,        // min bound
   max: 1,        // max bound
   edge: 0.15,    // gutter size
   value: 0.5,    // initial value
-  damping: 0.3,  // flick friction
+  damping: 0.25, // flick friction
   spring: 0.2    // "bounce back" friction
 })
 
@@ -47,9 +48,12 @@ function normalize (pos) {
   return pos[0] / width
 }
 
-loop(function () {
+loop(tick).start()
+tick()
+
+function tick () {
   input.update()
   var x = input.value * width
   css(cursor, 'left', x)
   text.innerText = input.value.toFixed(2)
-}).start()
+}
