@@ -79,9 +79,11 @@ SpringInput.prototype.move = function (value) {
     this.momentum = 0
 
     var delta = value - this.lastInput
-    if ((this.value + delta > this.max + this.edge) ||
-      (this.value + delta < this.min - this.edge)) {
-      value = clamp(value, this.min - this.edge, this.max + this.edge)
+    if (this.value + delta > this.max + this.edge) {
+      value = Math.min(value, this.max + this.edge)
+    }
+    if (this.value + delta < this.min - this.edge) {
+      value = Math.max(value, this.min - this.edge)
     }
     this.inputDelta = delta
     this.inputDeltas[this.inputDeltaIndex] = this.inputDelta
