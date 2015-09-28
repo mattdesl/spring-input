@@ -82,7 +82,7 @@ SpringInput.prototype.move = function (value) {
     }
     this.inputDelta = delta
     this.lastInput = value
-    
+
     // clamp to max velocity
     var maxVelocity = Math.abs(this.maxVelocity)
     if (this.inputDelta < 0) {
