@@ -70,8 +70,9 @@ Creates a new sprint input with the optional settings:
 - `min` - the minimum bound, default 0 (can be `-Infinity`)
 - `max` - the maximum bound, default 1 (can be `Infinity`)
 - `edge` - the relative edge gutter size, default 0 (i.e. no "bounce back")
-- `damping` - adjusts the friction when flicking; defualt 0.1
-- `spring` - adjusts the friction when bouncing back; default 0.1
+- `damping` - adjusts the friction when flicking; defualt 0.3
+- `spring` - adjusts the friction when bouncing back; default 0.2
+- `maxVelocity` - the maximum velocity in a flick, default 0.05
 
 All values can be changed during runtime, eg:
 
@@ -81,19 +82,27 @@ spring.max = newScrollHeight
 
 #### `spring.start(value)`
 
-Initiates user input with the specified `value`, such as the X mouse position.
+Called to trigger a "start" event with the specified `value`, such as the initial X mouse position.
 
 #### `spring.move(value)`
 
-Initiates a user "move" event with the specified `value`.
+Called to trigger a "move" event with the specified `value`, such as a new mouse X position.
 
 #### `spring.end()`
 
-Stops user input, which allows the value to be integrated and roll into place.
+Stops user input, allowing the value to be integrated and slide into place.
 
 #### `spring.update()`
 
 Integrates the spring. Should be called once per animation loop.
+
+#### `spring.value`
+
+The currently integrated value.
+
+#### `spring.velocity`
+
+The current velocity.
 
 ## See Also
 

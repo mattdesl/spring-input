@@ -4,10 +4,10 @@ var touches = require('touches')
 var input = require('./')({
   min: 0,        // min bound
   max: 1,        // max bound
-  edge: 0.1,     // gutter size
+  edge: 0.15,    // gutter size
   value: 0.5,    // initial value
-  damping: 0.25, // flick friction
-  spring: 0.15   // "bounce back" friction
+  damping: 0.3,  // flick friction
+  spring: 0.2    // "bounce back" friction
 })
 
 var width = 200
