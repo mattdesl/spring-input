@@ -13,6 +13,7 @@ function SpringInput (opt) {
   this.lastInput = 0
   this.interacting = false
   this.inputDelta = 0
+  this.updatesSinceLastMove = 0
 
   this.value = opt.value || 0
   this.min = opt.min || 0
@@ -28,6 +29,13 @@ SpringInput.prototype.update = function () {
   var isAfter = this.value > this.max
   var dipping = !this.interacting
   var dip = 0
+  
+  if (this.interacting) {
+    this.updatesSinceLastMove += 1
+    if (this.updatesSinceLastMove > 3) {
+      this.velocity = 0
+    }
+  }
 
   // ease input at edges
   if (isBefore) {
@@ -82,6 +90,7 @@ SpringInput.prototype.move = function (value) {
     }
     this.inputDelta = delta
     this.lastInput = value
+    this.updatesSinceLastMove = 0
 
     // clamp to max velocity
     var maxVelocity = Math.abs(this.maxVelocity)
