@@ -31,12 +31,12 @@ SpringInput.prototype.update = function () {
 
   // ease input at edges
   if (isBefore) {
-    this.velocity = 0
+    this.velocity *= 1 - this.spring
     if (this.inputDelta < 0 && this.edge !== 0) {
       this.inputDelta *= 1 - Math.abs(this.value - this.min) / this.edge
     }
   } else if (isAfter) {
-    this.velocity = 0
+    this.velocity *= 1 - this.spring
     if (this.inputDelta > 0 && this.edge !== 0) {
       this.inputDelta *= 1 - Math.abs(this.value - this.max) / this.edge
     }
